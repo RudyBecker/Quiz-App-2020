@@ -35,7 +35,7 @@ Please make sure to update tests as appropriate.
 ## Additional Features
 
  Version 2.0 will contain:
- - Questions and question options changing order each time the quiz is played
+ - Questions and question choices changing order each time the quiz is played
  - Ability to save High Scores
  - Add personalization to include player's name
  - Choice to add timer to answer each question (30 sec, 60 sec, 90 sec, etc.)
