@@ -11,6 +11,7 @@ This quiz web application contains 21 questions on various topics over three rou
  - The correct answer is revealed after a user has submitted their answer 
  - A user can see the score they received at the end of the round
  - A user can skip a question (but it counts against their score)
+ - Responsive web app for mobile and desktop
 
 
 ## Installation
