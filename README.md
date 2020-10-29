@@ -19,9 +19,13 @@ This quiz web application contains 21 questions on various topics over three rou
 **Install yarn dependencies**
 
     yarn install
-  **Compiles and hot-reloads for development**
+**Compiles and hot-reloads for development**
 
     yarn serve
+
+**Run Jest Unit tests**
+
+    yarn test:unit
 
 ## System Dependencies
 Vue 2.6.11
