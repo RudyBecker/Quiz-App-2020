@@ -1,5 +1,5 @@
 import App from "@/App.vue";
-import {shallowMount} from "@vue/test-utils";
+import {shallowMount, mount} from "@vue/test-utils";
 
 describe("App.vue", () =>{
     let wrapper;
@@ -17,3 +17,12 @@ describe("App.vue", () =>{
         expect(wrapper.find("img")).toEqual({"selector": "img"});
     })
 })
+
+describe("App.vue", () => {
+  it('renders a div', () => {
+    const wrapper = shallowMount(App)
+    expect(wrapper.contains('div')).toBe(true)
+  })
+})
+
+
