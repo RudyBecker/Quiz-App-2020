@@ -4,6 +4,7 @@ Tandem Software Engineer Apprenticeship
 ## Key Features
 This quiz web application contains 21 questions on various topics over three rounds. 
 
+ - Jest unit testing
  - A user can view questions.  
  - Questions with their multiple choice options must be displayed one at a time. 
  - Questions do not repeat in a round.
