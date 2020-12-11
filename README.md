@@ -1,5 +1,4 @@
-# Tandem-Quiz-October-2020
-Tandem Software Engineer Apprenticeship
+# Quiz-App-Fall 2020
 
 ## Key Features
 This quiz web application contains 21 questions on various topics over three rounds. 
