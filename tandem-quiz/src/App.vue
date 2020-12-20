@@ -2,8 +2,9 @@
   <div class="container-app">
     <div class="container-quiz">
       <div class="header-quiz">
-        <img style="width: 30%;" src="./assets/tandem-logo.png" />
+        <img style="width: 30%;" src="./assets/Trivia.png" />
       </div>
+      <!-- Dynamically Display Progress through the Game -->
       <div class="step-progress" :style="{ width: progress + '%' }"></div>
       <div
         class="box"
@@ -11,27 +12,30 @@
         :key="index"
         v-show="quiz"
       >
+        <!-- Dynamically Render Rounds (1st , 2nd, Final Round) -->
         <div class="box-question">
           <div v-if="b === 1">
             <h2 class="round-color">Welcome to Round 1!</h2>
-            <h4>Your current score is: {{ average }}</h4>
+            <h4>Your current score is: {{ averageFirst }}</h4>
             <br />
           </div>
           <div v-if="b === 10">
             <h2 class="round-color">Welcome to Round 2!</h2>
-            <h4>Your current score is: {{ average }}</h4>
+            <h4>Your current score is: {{ averageSecond }}</h4>
             <br />
           </div>
           <div v-if="b === 21">
             <h2 class="round-color">Round 3 - Final Question!</h2>
-            <h4>Your current score is: {{ average }}</h4>
+            <h4>Your current score is: {{ averageFinal }}</h4>
             <br />
           </div>
           <h2>Question {{ b }}/{{ questions.length }}</h2>
           <p>{{ question.question }}</p>
         </div>
+        <!-- Display Answer Choices upon click check if correct, if correct add to score data variable -->
         <div class="box-answer">
           <ul>
+            <!-- Loop through JSON Array of Objects that show questions and answers -->
             <li
               v-for="(answer, index) in question.answer"
               :key="index"
@@ -40,6 +44,7 @@
               :class="correct ? check(answer) : ''"
             >
               {{ answer.answerOption }}
+              <!-- Ternary to show check mark or X mark on correct or incorrect answers -->
               <div
                 class="fas fa-check"
                 v-if="correct ? answer.correct : ''"
@@ -52,6 +57,7 @@
           </ul>
         </div>
       </div>
+      <!-- Final Window to Show Score -->
       <div class="box-score" v-if="score_show">
         <h2>Congratulations!</h2>
         <h2>Your final score is:</h2>
@@ -64,12 +70,14 @@
       </div>
       <div class="footer-quiz">
         <div v-if="progress <= 99" class="box-button">
+          <!-- If Skip go to next question -->
           <button
             @click="skipQuestion()"
             :style="next ? 'background-color: rgb(254, 235, 79' : ''"
           >
             Skip
           </button>
+
           <button
             @click="nextQuestion()"
             :style="!next ? 'background-color: rgb(254, 235, 79' : ''"
@@ -83,6 +91,7 @@
 </template>
 
 <script>
+// Import of Questions stored in Array of Objects
 import questions from "./data/data.js";
 export default {
   data() {
@@ -99,16 +108,35 @@ export default {
     };
   },
   name: "App",
-  components: {},
   computed: {
+    // Score Calculations for each Round
+    averageFinal() {
+      return (this.score / 20).toLocaleString(undefined, {
+        style: "percent",
+        minimumFractionDigits: 0,
+      });
+    },
+    averageSecond() {
+      return (this.score / 9).toLocaleString(undefined, {
+        style: "percent",
+        minimumFractionDigits: 0,
+      });
+    },
+    averageFirst() {
+      return (this.score / 1).toLocaleString(undefined, {
+        style: "percent",
+        minimumFractionDigits: 0,
+      });
+    },
     average() {
       return (this.score / this.questions.length).toLocaleString(undefined, {
         style: "percent",
-        minimumFractionDigits: 2,
+        minimumFractionDigits: 0,
       });
     },
   },
   methods: {
+    // Check answer if correct increase running score value
     selectAnswer(e) {
       this.correct = true;
       this.next = false;
@@ -116,6 +144,7 @@ export default {
         this.score++;
       }
     },
+    // return CSS on Correct and Incorrect buttons
     check(status) {
       if (status.correct) {
         return "correct";
