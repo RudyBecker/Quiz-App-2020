@@ -13,7 +13,7 @@ describe("App.vue", () =>{
         expect(wrapper.exists()).toBe(true);
     })
 
-    it("does logo img exist", ()=> {
+    it("does trivia img exist", ()=> {
         expect(wrapper.find("img")).toEqual({"selector": "img"});
     })
 })

@@ -6,6 +6,7 @@
       </div>
       <!-- Dynamically Display Progress through the Game -->
       <div class="step-progress" :style="{ width: progress + '%' }"></div>
+      <!-- Cycle through each question option screen -->
       <div
         class="box"
         v-for="(question, index) in questions.slice(a, b)"
@@ -16,17 +17,23 @@
         <div class="box-question">
           <div v-if="b === 1">
             <h2 class="round-color">Welcome to Round 1!</h2>
-            <h4>Your current score is: {{ averageFirst }}</h4>
+            <div v-if="hide_score">
+              <h4>Your current score is: {{ averageFirst }}</h4>
+            </div>
             <br />
           </div>
           <div v-if="b === 10">
             <h2 class="round-color">Welcome to Round 2!</h2>
-            <h4>Your current score is: {{ averageSecond }}</h4>
+            <div v-if="hide_score">
+              <h4>Your current score is: {{ averageSecond }}</h4>
+            </div>
             <br />
           </div>
           <div v-if="b === 21">
             <h2 class="round-color">Round 3 - Final Question!</h2>
-            <h4>Your current score is: {{ averageFinal }}</h4>
+            <div v-if="hide_score">
+              <h4>Your current score is: {{ averageFinal }}</h4>
+            </div>
             <br />
           </div>
           <h2>Question {{ b }}/{{ questions.length }}</h2>
@@ -105,6 +112,7 @@ export default {
       score: 0,
       correct: false,
       progress: 0,
+      hide_score: true,
     };
   },
   name: "App",
@@ -140,6 +148,7 @@ export default {
     selectAnswer(e) {
       this.correct = true;
       this.next = false;
+      this.hide_score = false;
       if (e.correct) {
         this.score++;
       }
@@ -166,6 +175,7 @@ export default {
         this.b++;
         this.correct = false;
         this.next = true;
+        this.hide_score = true;
       }
     },
     //Skip Question
