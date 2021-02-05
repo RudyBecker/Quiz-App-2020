@@ -156,7 +156,7 @@ const questions = [
   },
   {
     question:
-      "Where in the world is the only place where Canada is *due south*",
+      "Where in the world is the only place where Canada is *due south* ?",
     answer: [
       { answerOption: "Alaska" },
       { answerOption: "Washington" },

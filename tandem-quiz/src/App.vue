@@ -68,7 +68,8 @@
       <div class="box-score" v-if="score_show">
         <h2>Congratulations!</h2>
         <h2>Your final score is:</h2>
-        <h2>{{ average }}</h2>
+        <h1>{{ average }}</h1>
+        <h2>Coded by Rudy Becker</h2>
         <div class="btn-restart">
           <button @click="restartQuiz">
             Play Again <i class="fas fa-sync-alt"></i>
