@@ -1,4 +1,4 @@
-# Quiz-App-Fall 2020
+# Quiz-App 2020
 
 ## Key Features
 This quiz web application contains 21 questions on various topics over three rounds. 
